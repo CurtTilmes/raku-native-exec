@@ -29,7 +29,7 @@ Including any named parameters OTHER THAN `:nopath` will build a new environment
 EXCEPTIONS
 ==========
 
-`exec` does NOT return. On success, the `exec`ed program will replace your Perl 6 program entirely. If there are any errors, such as not finding the specified program, it will throw `X::Native::Exec` with the native error code. You can access the native error code with `.errno`, and the native error message with <.message>.
+`exec` does NOT return. On success, the `exec`ed program will replace your Perl 6 program entirely. If there are any errors, such as not finding the specified program, it will throw `X::Native::Exec` with the native error code. You can access the native error code with `.errno`, and the native error message with `.message`.
 
     exec 'non-existant';
 
