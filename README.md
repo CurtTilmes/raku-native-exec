@@ -43,5 +43,5 @@ EXCEPTIONS
 NOTE
 ====
 
-The <exec>* family are Unix specific, and are unlikely to work on other architectures.
+The `exec`* family are Unix specific, and are unlikely to work on other architectures.
 

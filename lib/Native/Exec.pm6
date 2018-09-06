@@ -99,7 +99,7 @@ C<.errno>, and the native error message with <.message>.
 
 =head1 NOTE
 
-The <exec>* family are Unix specific, and are unlikely to work on
+The C<exec>* family are Unix specific, and are unlikely to work on
 other architectures.
 
 =end pod
