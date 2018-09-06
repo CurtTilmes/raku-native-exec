@@ -26,7 +26,7 @@ class X::Native::Exec is Exception
     method message() { strerror($!errno) }
 }
 
-sub exec(Str:D $file, *@args, :$nopath, *%env) is export
+sub exec(Str:D $file, *@args, Bool :$nopath, *%env) is export
 {
     my $argv = CArray[Str].new($file, @args, Str);
 
@@ -86,7 +86,7 @@ C<exec> does NOT return.  On success, the C<exec>ed program will
 replace your Perl 6 program entirely.  If there are any errors, such
 as not finding the specified program, it will throw C<X::Native::Exec>
 with the native error code.  You can access the native error code with
-C<.errno>, and the native error message with <.message>.
+C<.errno>, and the native error message with C<.message>.
 
   exec 'non-existant';
 
