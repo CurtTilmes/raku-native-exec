@@ -2,14 +2,12 @@ NAME := $(shell jq -r .name META6.json)
 VERSION := $(shell jq -r .version META6.json)
 ARCHIVENAME := $(subst ::,-,$(NAME))
 
-check: test
+check:
 	git diff-index --check HEAD
-
-test:
 	prove6
 
 README.md: lib/Native/Exec.pm6
-	perl6 --doc=Markdown $< > $@
+	raku --doc=Markdown $< > $@
 
 tag:
 	git tag $(VERSION)

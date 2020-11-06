@@ -65,6 +65,10 @@ Native::Exec -- NativeCall bindings for Unix exec*() calls
   # Override ENV entirely by passing in named params
   exec 'env', HOME => '/my/home', PATH => '/bin:/usr/bin';
 
+  # Use Raku environment variables
+  %*ENV<TEST_ENV_VAR> = "Hello world";
+  exec 'env', |%*ENV;
+
 =head1 DESCRIPTION
 
 Very basic wrapper around NativeCall bindings for the Unix C<execv>(),
@@ -80,10 +84,14 @@ Including any named parameters OTHER THAN C<:nopath> will build a new
 environment for the C<exec>ed program, replacing the existing
 environment entirely, using the 'e' variants.
 
+Note that Raku does not propagate changes from C<%*ENV> to the OS
+environment.  If you want to use them, you must pass C<%*ENV> into the
+exec call explicitly.
+
 =head1 EXCEPTIONS
 
 C<exec> does NOT return.  On success, the C<exec>ed program will
-replace your Perl 6 program entirely.  If there are any errors, such
+replace your Raku program entirely.  If there are any errors, such
 as not finding the specified program, it will throw C<X::Native::Exec>
 with the native error code.  You can access the native error code with
 C<.errno>, and the native error message with C<.message>.

@@ -1,10 +1,9 @@
 use Test;
-
 use Native::Exec;
 
 plan 15;
 
-my $exec = $*PROGRAM.sibling('exec.p6').absolute;
+my $exec = $*PROGRAM.sibling('exec.raku').absolute;
 
 ok my $proc = run($exec, 'echo', 'hello', 'world', :out), 'Run echo';
 is $proc.out.slurp(:close), "hello world\n", 'output';
